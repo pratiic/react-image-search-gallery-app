@@ -20,15 +20,34 @@
 		left: 5rem;
 		top: 5rem;
 		color: white;
+
+		@media screen and (max-width: 800px) {
+			top: 3rem;
+			left: 3rem;
+		}
+
+		@media screen and (max-width: 800px) {
+			top: 5rem;
+			left: 5rem;
+		}
 	}
 
 	img {
 		display: block;
 		// height: 50rem;
 		// width: 50rem;
-		height: 80%;
+		height: 40vw;
 		border: 1rem solid white;
 		box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
 		cursor: auto;
+
+		@media screen and (max-width: 800px) {
+			height: 50vw;
+			max-width: 85%;
+		}
+
+		@media screen and (max-width: 500px) {
+			height: 75vw;
+		}
 	}
 }

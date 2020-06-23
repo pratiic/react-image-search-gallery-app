@@ -1,0 +1,34 @@
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+	cursor: pointer;
+
+	&-show {
+		display: flex;
+	}
+
+	i {
+		position: absolute;
+		left: 5rem;
+		top: 5rem;
+		color: white;
+	}
+
+	img {
+		display: block;
+		// height: 50rem;
+		// width: 50rem;
+		height: 80%;
+		border: 1rem solid white;
+		box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
+		cursor: auto;
+	}
+}

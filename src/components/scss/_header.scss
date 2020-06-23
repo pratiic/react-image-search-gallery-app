@@ -1,0 +1,35 @@
+.header {
+	margin: 3.5rem 0 3rem 0;
+	height: 3.5rem;
+
+	.input-group {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.search-bar {
+		height: 3.5rem;
+		width: 50rem;
+		outline: none;
+		padding: 0 1rem;
+		font-size: 1.75rem;
+		border: 1px solid $primary-blue;
+		border-radius: 3px;
+		margin-right: 0.75rem;
+
+		&:hover,
+		&:focus {
+			box-shadow: -2px 1px 5px 0 rgba(0, 0, 0, 0.3);
+			//border: none;
+		}
+	}
+
+	.button {
+		height: 3.5rem;
+	}
+
+	::-webkit-input-placeholder {
+		color: $light-grey;
+	}
+}

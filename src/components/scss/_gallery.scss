@@ -1,0 +1,10 @@
+.gallery {
+	max-width: 85%;
+	margin: 0 auto 10rem auto;
+	overflow-x: hidden;
+	padding: 0 2rem 2rem 2rem;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	grid-gap: 2.35rem;
+}

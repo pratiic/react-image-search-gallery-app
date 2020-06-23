@@ -1,0 +1,19 @@
+.image-container {
+	cursor: pointer;
+	border: 3px solid $primary-blue;
+	overflow: hidden;
+	border-radius: 5px;
+	box-shadow: 5px 5px 0.8rem 0 rgba(0, 0, 0, 0.4);
+
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		display: block;
+		@include trans(transform, 350ms);
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}

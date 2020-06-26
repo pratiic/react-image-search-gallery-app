@@ -15,15 +15,22 @@ class App extends React.Component {
 		showModal: false,
 		modalClass: "modal",
 		modalImage: "",
+		page: 1,
+		galleryClass: "hide",
+		searched: false,
 	};
 
 	apiInfo = {
-		url: "https://api.unsplash.com/search/photos",
+		searchURL: "https://api.unsplash.com/search/photos",
+		randomURL: "https://api.unsplash.com/photos",
 		key: "NFPXHjm0O70CKmPIwGa5LyRSTF22RAGhPvzaPIdwyK8",
-		page: 1,
 		per_page: 30,
 		query: "",
 	};
+
+	componentDidMount() {
+		this.getImages();
+	}
 
 	showError = () => {
 		if (this.state.showAlert === true) {
@@ -37,23 +44,67 @@ class App extends React.Component {
 		}
 	};
 
-	getImages = (searchTerm) => {
-		this.apiInfo.query = searchTerm;
+	loadMoreImages = () => {
+		this.setState({ page: ++this.state.page });
+		console.log(this.state.page);
+		this.getImages(this.apiInfo.query);
+	};
 
-		fetch(
-			`${this.apiInfo.url}?page=${this.apiInfo.page}&per_page=${this.apiInfo.per_page}&client_id=${this.apiInfo.key}&query=${this.apiInfo.query}`
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.total !== 0) {
-					this.setState({ images: data.results });
-				} else {
-					this.setState({
-						errorMessage: "no images were found",
-						showAlert: true,
-					});
-				}
+	getImages = (searchTerm) => {
+		if (searchTerm) {
+			this.apiInfo.query = searchTerm;
+
+			if (this.state.searched === false) {
+				this.setState({ images: [], searched: true });
+			}
+
+			fetch(
+				`${this.apiInfo.searchURL}?page=${this.state.page}&per_page=${this.apiInfo.per_page}&client_id=${this.apiInfo.key}&query=${this.apiInfo.query}`
+			)
+				.then((response) => response.json())
+				.then((data) => {
+					console.log(data);
+
+					this.handleFetchedData(data.results, data);
+				});
+		} else {
+			fetch(
+				`${this.apiInfo.randomURL}?page=${this.state.page}&per_page=${this.apiInfo.per_page}&client_id=${this.apiInfo.key}`
+			)
+				.then((response) => response.json())
+				.then((data) => {
+					//this.handleFetchedData(data);
+					this.handleNewData(data);
+				});
+		}
+	};
+
+	handleFetchedData = (dataResults, data) => {
+		if (dataResults !== 0) {
+			this.setState({
+				images: [...this.state.images, ...dataResults],
+				galleryClass: "show",
 			});
+		} else {
+			this.setState({
+				errorMessage: "no images were found",
+				showAlert: true,
+			});
+		}
+	};
+
+	handleNewData = (data) => {
+		if (data !== 0) {
+			this.setState({
+				images: [...this.state.images, ...data],
+				galleryClass: "show",
+			});
+		} else {
+			this.setState({
+				errorMessage: "no images were found",
+				showAlert: true,
+			});
+		}
 	};
 
 	showModal = (image) => {
@@ -88,7 +139,15 @@ class App extends React.Component {
 				<Gallery
 					images={this.state.images}
 					showModal={this.showModal}
-				/>
+					class={this.state.galleryClass}
+				>
+					<Button
+						value={"load more"}
+						class={`${this.state.galleryClass} button-gallery`}
+						function={"load-more"}
+						loadMoreImages={this.loadMoreImages}
+					/>
+				</Gallery>
 
 				<Modal
 					class={this.state.modalClass}

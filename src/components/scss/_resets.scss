@@ -21,6 +21,22 @@ html {
 body {
 	font-family: $font-stack-primary;
 	overflow-x: hidden;
+
+	#root {
+		& > * {
+			&.show {
+				display: block;
+
+				&.gallery {
+					display: grid;
+				}
+			}
+
+			&.hide {
+				display: none;
+			}
+		}
+	}
 }
 
 a {

@@ -1,12 +1,12 @@
 .image-container {
 	cursor: pointer;
-	border: 3px solid $primary-blue;
+	//border: 3px solid $primary-blue;
 	overflow: hidden;
 	border-radius: 5px;
-	box-shadow: 5px 5px 0.8rem 0 rgba(0, 0, 0, 0.4);
+	//box-shadow: 5px 5px 0.8rem 0 rgba(0, 0, 0, 0.4);
+	margin-bottom: 0.5rem;
 
 	img {
-		height: 100%;
 		width: 100%;
 		object-fit: cover;
 		display: block;

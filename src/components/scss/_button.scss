@@ -17,4 +17,9 @@
 	&:active {
 		background-color: darken($primary-blue, 25%);
 	}
+
+	&-gallery {
+		display: block;
+		margin: 0 auto 3rem auto;
+	}
 }

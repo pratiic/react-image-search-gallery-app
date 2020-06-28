@@ -31,7 +31,7 @@ class ImageContainer extends React.Component {
 				}}
 			>
 				<img
-					src={this.props.image.urls.regular}
+					src={this.props.image.urls.small}
 					alt=""
 					ref={this.imgRef}
 				/>

@@ -242,7 +242,6 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
   cursor: pointer;
 }
 
@@ -289,5 +288,6 @@ li {
 @media screen and (max-width: 500px) {
   .modal img {
     height: 75vw;
+    border: 5px solid white;
   }
 }

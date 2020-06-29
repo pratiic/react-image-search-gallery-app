@@ -3,9 +3,9 @@ import ImageContainer from "./ImageContainer.jsx";
 
 class Gallery extends React.Component {
 	render() {
-		return (
+		return this.props.images.length > 0 ? (
 			<>
-				<div className={`gallery ${this.props.class}`}>
+				<div className={`gallery`}>
 					{this.props.images.map((image) => {
 						return (
 							<ImageContainer
@@ -18,7 +18,7 @@ class Gallery extends React.Component {
 				</div>
 				{this.props.children}
 			</>
-		);
+		) : null;
 	}
 }
 

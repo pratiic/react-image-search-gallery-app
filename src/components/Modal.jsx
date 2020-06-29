@@ -8,12 +8,16 @@ class Modal extends React.Component {
 	};
 
 	render() {
-		return (
-			<div className={this.props.class} onClick={this.modalClickHandler}>
+		return this.props.showModal ? (
+			<div className="modal" onClick={this.modalClickHandler}>
 				<i className="fas fa-times fa-3x"></i>
-				<img src={this.props.imageURL} alt="" className="modal-image" />
+				<img
+					src={this.props.modalImageURL}
+					alt=""
+					className="modal-image"
+				/>
 			</div>
-		);
+		) : null;
 	}
 }
 

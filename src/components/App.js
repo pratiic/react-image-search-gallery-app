@@ -21,9 +21,6 @@ class App extends React.Component {
 		//if modal should be shown
 		showModal: false,
 
-		modalClass: "modal",
-		galleryClass: "hide",
-
 		//image to be shown in the modal
 		modalImage: "",
 
@@ -128,7 +125,6 @@ class App extends React.Component {
 			this.setState({
 				//updating the images array
 				images: [...this.state.images, ...data],
-				galleryClass: "show",
 			});
 		} else {
 			this.setState({
@@ -140,14 +136,14 @@ class App extends React.Component {
 
 	showModal = (image) => {
 		this.setState({
-			modalClass: "modal modal-show",
+			showModal: true,
 			modalImage: image.urls.regular,
 		});
 	};
 
 	hideModal = () => {
 		this.setState({
-			modalClass: "modal",
+			showModal: false,
 		});
 	};
 
@@ -167,11 +163,7 @@ class App extends React.Component {
 					images={this.state.images}
 				/>
 
-				<Gallery
-					images={this.state.images}
-					showModal={this.showModal}
-					class={this.state.galleryClass}
-				>
+				<Gallery images={this.state.images} showModal={this.showModal}>
 					<Button
 						value={"load more"}
 						class={`${this.state.galleryClass} button-gallery`}
@@ -181,9 +173,9 @@ class App extends React.Component {
 				</Gallery>
 
 				<Modal
-					class={this.state.modalClass}
-					imageURL={this.state.modalImage}
+					modalImageURL={this.state.modalImage}
 					hideModal={this.hideModal}
+					showModal={this.state.showModal}
 				/>
 			</>
 		);

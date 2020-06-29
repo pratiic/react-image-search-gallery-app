@@ -8,7 +8,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	display: none;
 	cursor: pointer;
 
 	&-show {
@@ -48,6 +47,7 @@
 
 		@media screen and (max-width: 500px) {
 			height: 75vw;
+			border: 5px solid white;
 		}
 	}
 }
